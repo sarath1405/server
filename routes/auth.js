@@ -7,41 +7,41 @@ require('dotenv').config()
 
 const user = require('../modules/user')
 
-router.route('/login').post(async (req, res) => {
-    const username = req.body.username;
-    const password = req.body.password;
+// router.route('/login').post(async (req, res) => {
+//     const username = req.body.username;
+//     const password = req.body.password;
 
-    const response = await user.findOne({
-        username : username
-    })
+//     const response = await user.findOne({
+//         username : username
+//     })
 
-    if(!response) {
-        return res.json({
-            status : 'error',
-            message : 'No user found, please register!'
-        })
-    }
+//     if(!response) {
+//         return res.json({
+//             status : 'error',
+//             message : 'No user found, please register!'
+//         })
+//     }
 
-    const hash_password = await bcrypt.compare(password, response.password);
+//     const hash_password = await bcrypt.compare(password, response.password);
 
-    if(hash_password) {
+//     if(hash_password) {
 
-        const token = jwt.sign({
-            username : username,
-            avatar : response.avatar
-        }, process.env.JWT_SECRET, {expiresIn : '1d'});
+//         const token = jwt.sign({
+//             username : username,
+//             avatar : response.avatar
+//         }, process.env.JWT_SECRET, {expiresIn : '1d'});
 
-        return res.json({
-            status : 'ok',
-            data : token
-        })  
-    }
+//         return res.json({
+//             status : 'ok',
+//             data : token
+//         })  
+//     }
 
-    return res.json({
-        status : 'error',
-        message : 'incorrect password!'
-    })
-})
+//     return res.json({
+//         status : 'error',
+//         message : 'incorrect password!'
+//     })
+// })
 
 // router.route('/signup').post(async (req, res) => {
 //     const username = req.body.username;
