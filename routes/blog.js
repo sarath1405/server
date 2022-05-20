@@ -37,6 +37,7 @@ router.route('/getBlogs').get(async (req, res) => {
     const user = req.headers['user']
     const response = await blog.find({
         user : {$ne : user},
+        type : 'public',
     });
 
     return res.json({
