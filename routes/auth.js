@@ -118,27 +118,27 @@ router.route('/signup').post(async (req, res) => {
     }
 })
 
-router.route('/auth').get(async (req, res) => {
-    const token = req.headers['x-access-token'];
-    try {
-        const decode = jwt.verify(token, process.env.JWT_SECRET);
-        const username = decode.username
-        const data = await user.findOne({
-            username : username
-        })
-        if(data) {
-            return res.json({
-                status : 'ok',
-                username : decode.username,
-                avatar : decode.avatar,
-            })
-        }   
-    }catch(error) {
-        return res.json({
-            status : 'error'
-        })
-    }
-})
+// router.route('/auth').get(async (req, res) => {
+//     const token = req.headers['x-access-token'];
+//     try {
+//         const decode = jwt.verify(token, process.env.JWT_SECRET);
+//         const username = decode.username
+//         const data = await user.findOne({
+//             username : username
+//         })
+//         if(data) {
+//             return res.json({
+//                 status : 'ok',
+//                 username : decode.username,
+//                 avatar : decode.avatar,
+//             })
+//         }   
+//     }catch(error) {
+//         return res.json({
+//             status : 'error'
+//         })
+//     }
+// })
 
 // router.route('/feedback').post(async (req, res) => {
 //     const name = req.body.name;
