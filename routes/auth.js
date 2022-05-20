@@ -43,80 +43,80 @@ router.route('/login').post(async (req, res) => {
     })
 })
 
-router.route('/signup').post(async (req, res) => {
-    const username = req.body.username;
-    const password = req.body.password;
-    const c_password = req.body.confirmPassword;
-    const avatar = req.body.avatar;
+// router.route('/signup').post(async (req, res) => {
+//     const username = req.body.username;
+//     const password = req.body.password;
+//     const c_password = req.body.confirmPassword;
+//     const avatar = req.body.avatar;
 
-    if(avatar === 0) {
-        return res.json({
-            status : 'error',
-            message : 'select any one avatar!'
-        })
-    }
+//     if(avatar === 0) {
+//         return res.json({
+//             status : 'error',
+//             message : 'select any one avatar!'
+//         })
+//     }
 
-    if(password !== c_password) {
-        return res.json({
-            status : 'error',
-            message : 'passwords not matched!'
-        })
-    }
+//     if(password !== c_password) {
+//         return res.json({
+//             status : 'error',
+//             message : 'passwords not matched!'
+//         })
+//     }
 
-    let l=0, n=0;
-    for(let i=0; i<username.length; i++) {
-        if((username[i]>='A' && username[i]<='z') || (username[i]>='a' && username[i]<='z')) l++;
-        if(username[i]>='0' && username[i]<='9') n++;
-    }
+//     let l=0, n=0;
+//     for(let i=0; i<username.length; i++) {
+//         if((username[i]>='A' && username[i]<='z') || (username[i]>='a' && username[i]<='z')) l++;
+//         if(username[i]>='0' && username[i]<='9') n++;
+//     }
     
-    if(l === 0) {
-        return res.json({
-            status : 'error',
-            message : 'username must contain atleast one alphabet!'
-        })
-    }
+//     if(l === 0) {
+//         return res.json({
+//             status : 'error',
+//             message : 'username must contain atleast one alphabet!'
+//         })
+//     }
 
-    if(n === 0) {
-        return res.json({
-            status : 'error',
-            message : 'username must contain atleast one number!'
-        })
-    }
+//     if(n === 0) {
+//         return res.json({
+//             status : 'error',
+//             message : 'username must contain atleast one number!'
+//         })
+//     }
 
-    if(password.length < 6) {
-        return res.json({
-            status : 'error',
-            message : 'password should be atleast 6 characters long!'
-        })
-    }
+//     if(password.length < 6) {
+//         return res.json({
+//             status : 'error',
+//             message : 'password should be atleast 6 characters long!'
+//         })
+//     }
 
-    const response = await user.find({
-        username : username
-    })
+//     const response = await user.find({
+//         username : username
+//     })
 
-    if(response.length > 0) {
-        return res.json({
-            status : 'error',
-            message : 'username already exists!'
-        })
-    }
+//     if(response.length > 0) {
+//         return res.json({
+//             status : 'error',
+//             message : 'username already exists!'
+//         })
+//     }
 
-    const salt = await bcrypt.genSalt(10);
-    const hash_password = await bcrypt.hash(req.body.password, salt);
+//     const salt = await bcrypt.genSalt(10);
+//     const hash_password = await bcrypt.hash(req.body.password, salt);
 
-    const newUser = {
-        username : username,
-        password : hash_password,
-        avatar : avatar
-    }
+//     const newUser = {
+//         username : username,
+//         password : hash_password,
+//         avatar : avatar
+//     }
 
-    const response1 = await user.create(newUser);
-    if(response1) {
-       return res.json({
-            status : 'ok'
-        })
-    }
-})
+//     const response1 = await user.create(newUser);
+//     if(response1) {
+//        return res.json({
+//             status : 'ok'
+//         })
+//     }
+// })
 
 // router.route('/auth').get(async (req, res) => {
 //     const token = req.headers['x-access-token'];
