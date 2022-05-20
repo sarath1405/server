@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router();
 const blog = require('../modules/blog')
-// const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const feedback1 = require('../modules/feedback')
 require('dotenv').config()
@@ -93,6 +93,8 @@ router.route('/signup').post(async (req, res) => {
             message : 'username already exists!'
         })
     }
+
+    const bcrypt = bcrypt();
 
     const salt = await bcrypt.genSalt(10);
     const hash_password = await bcrypt.hash(req.body.password, salt);
