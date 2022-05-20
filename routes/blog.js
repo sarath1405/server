@@ -17,6 +17,7 @@ router.route('/create').post(async (req, res) => {
         avatar : avatar, 
         content : content,
         description : description,
+        type : type,
         date : new Date()
     }
 

@@ -16,6 +16,9 @@ const blogSchema = new mongoose.Schema({
     description : {
         type : String
     },
+    type : {
+        type : String,
+    },
     date : {
         type : Date
     }
