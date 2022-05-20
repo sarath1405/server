@@ -10,6 +10,7 @@ router.route('/create').post(async (req, res) => {
     const avatar = req.body.avatar;
     const content = req.body.content;
     const description = req.body.description;
+    const type = req.body.type;
 
     const newBlog = {
         title : title,
