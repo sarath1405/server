@@ -20,5 +20,6 @@
   },
   "engines": {
     "node": "16.13.0"
-  }
+  },
+  "resolutions": { "fs-capacitor": "3.0.0" }
 }
