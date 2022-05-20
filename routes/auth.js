@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const feedback1 = require('../modules/feedback')
+require('dotenv').config()
 
 const user = require('../modules/user')
 
@@ -28,7 +29,7 @@ router.route('/login').post(async (req, res) => {
         const token = jwt.sign({
             username : username,
             avatar : response.avatar
-        }, 'secret140302', {expiresIn : '1d'});
+        }, process.env.JWT_SECRET, {expiresIn : '1d'});
 
         return res.json({
             status : 'ok',
@@ -120,7 +121,7 @@ router.route('/signup').post(async (req, res) => {
 router.route('/auth').get(async (req, res) => {
     const token = req.headers['x-access-token'];
     try {
-        const decode = jwt.verify(token, 'secret140302');
+        const decode = jwt.verify(token, process.env.JWT_SECRET);
         const username = decode.username
         const data = await user.findOne({
             username : username
