@@ -11,10 +11,10 @@ mongoose.connect("mongodb+srv://sarath14:Gd0b6Vc5Awqkw1ev@cluster0.arzcw.mongodb
 .catch("error");
 
 app.use(function(req, res, next) {
-    res.setHeader("Access-Control-Allow-Origin", 'https://blogapp07.netlify.app');
-    res.setHeader("Access-Control-Allow-Credentials", true);
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    res.setHeader("Access-Control-Allow-Headers", 'X-Requested-With,Content-Type');
+    res.header("Access-Control-Allow-Origin", '*');
+    res.header("Access-Control-Allow-Credentials", true);
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.header("Access-Control-Allow-Headers", 'X-Requested-With,Content-Type');
     next();
 });
 
