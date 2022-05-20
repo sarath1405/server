@@ -112,7 +112,7 @@ router.route('/signup').post(async (req, res) => {
 
     const response1 = await user.create(newUser);
     if(response1) {
-        res.json({
+       return res.json({
             status : 'ok'
         })
     }
@@ -140,22 +140,22 @@ router.route('/auth').get(async (req, res) => {
     }
 })
 
-router.route('/feedback').post(async (req, res) => {
-    const name = req.body.name;
-    const star = req.body.star;
-    const feedback = req.body.feedback;
+// router.route('/feedback').post(async (req, res) => {
+//     const name = req.body.name;
+//     const star = req.body.star;
+//     const feedback = req.body.feedback;
 
-    const response = await feedback1.create({
-        name : name,
-        star : star,
-        feedback : feedback
-    })
+//     const response = await feedback1.create({
+//         name : name,
+//         star : star,
+//         feedback : feedback
+//     })
 
-    if(response) {
-        return res.json({
-            status : 'ok',
-        })
-    }
-})
+//     if(response) {
+//         return res.json({
+//             status : 'ok',
+//         })
+//     }
+// })
 
 module.exports = router;
