@@ -1,8 +1,6 @@
 const express = require('express')
 const router = express.Router();
 const blog = require('../modules/blog')
-const likes = require('../modules/likes')
-const saved = require('../modules/saved')
 
 router.route('/create').post(async (req, res) => {
     const title = req.body.title;
