@@ -93,7 +93,7 @@ router.route('/signup').post(async (req, res) => {
             message : 'username already exists!'
         })
     }
-    
+
     const salt = await bcrypt.genSalt(10);
     const hash_password = await bcrypt.hash(req.body.password, salt);
 
@@ -114,7 +114,7 @@ router.route('/signup').post(async (req, res) => {
 router.route('/auth').get(async (req, res) => {
     const token = req.headers['x-access-token'];
     try {
-        const decode = jwt.verify(token, process.env.JWT_SECRET);
+        const decode = jwt.verify(token, 'SECRET123456');
         const username = decode.username
         const data = await user.findOne({
             username : username
@@ -173,7 +173,7 @@ router.route('/login').post(async (req, res) => {
         const token = jwt.sign({
             username : username,
             avatar : response.avatar
-        }, process.env.JWT_SECRET, {expiresIn : '1d'});
+        }, 'SECRET123456', {expiresIn : '1d'});
 
         return res.json({
             status : 'ok',
