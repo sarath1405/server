@@ -9,7 +9,7 @@
   },
   "author": "",
   "license": "ISC",
-  "proxy": "https://localhost:3000",
+  "proxy": "http://localhost:3000",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
