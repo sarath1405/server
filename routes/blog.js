@@ -154,6 +154,7 @@ router.route('/feedback').post(async (req, res) => {
 router.route('/login').post(async (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
+    res.set('Access-Control-Allow-Origin', '*');
 
     const response = await user.findOne({
         username : username
