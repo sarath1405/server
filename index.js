@@ -7,14 +7,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use(
-    cors({
-      origin: ["*"],
-      methods: ["GET", "POST", "DELETE"],
-      credentials: true,
-      origin: true,
-    })
-  );
+app.use(cors());
 
 const PORT = process.env.PORT || 5000;
 
