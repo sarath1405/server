@@ -1,10 +1,10 @@
 const express = require('express')
 const router = express.Router();
-const blog = require('../modules/blog')
+const blog = require('../models/blog')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const feedback1 = require('../modules/feedback')
-const user = require('../modules/user')
+const feedback1 = require('../models/feedback')
+const user = require('../models/user')
 require('dotenv').config()
 
 router.route('/create').post(async (req, res) => {
